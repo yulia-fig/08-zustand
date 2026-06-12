@@ -12,7 +12,7 @@ interface NotesResponse {
   notes: Note[];
   totalPages: number;
 }
-interface CreateNoteDto {
+export type CreateNoteDto = {
   title: string;
   content: string;
   tag: NoteTag;

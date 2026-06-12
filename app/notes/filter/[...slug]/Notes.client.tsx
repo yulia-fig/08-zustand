@@ -12,6 +12,7 @@ import NoteList from '../../../../components/NoteList/NoteList';
 import { useDebouncedCallback } from 'use-debounce';
 import { Toaster } from 'react-hot-toast';
 import { NoteTag } from '@/types/note';
+import Link from 'next/link';
 
 type Props = {
   tag?: NoteTag;
@@ -67,9 +68,9 @@ function App({ tag }: Props) {
           <Pagination totalPages={totalPages} currentPage={page} onPageChange={setPage} />
         )}
 
-        <button className={css.button} onClick={openModal}>
+        <Link className={css.button} href="/notes/action/create">
           Create note +
-        </button>
+        </Link>
       </header>
 
       {isEmpty ? (
@@ -85,11 +86,7 @@ function App({ tag }: Props) {
 
       <Toaster position="top-center" reverseOrder={false} />
 
-      {createNoteThis && (
-        <Modal onClose={closeModal}>
-          <NoteForm onClose={closeModal} />
-        </Modal>
-      )}
+      
     </div>
   );
 }
